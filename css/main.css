@@ -99,14 +99,16 @@ textarea {
 }
 
 #expressionbox {
-	background-image: url(../img/ExpressionBackground.png);
+	/*background-image: url(../img/ExpressionBackground.png);*/
+	background-color:#222;
 	background-attachment: fixed;
 	background-position: center;
 	color: #CCCCCC;
 }
 
 #historybox {
-	background-image: url(../img/HistoryBackground.png);
+	/*background-image: url(../img/HistoryBackground.png);*/
+	background-color:#222;
 	background-attachment: scroll;
 	background-repeat: no-repeat;
 	background-position: center;

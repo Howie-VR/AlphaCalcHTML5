@@ -1,6 +1,4 @@
 {
-"Root":
-	{
 	"Functions":
 		[
 			{
@@ -583,7 +581,7 @@
 				"expression":"Tutorial",
 				"tag":82,
 				"key":"Tutorial",
-				"description":"Show the tutorial"}
+				"description":"Show the tutorial"
+			}
 		]
-	}
 }
