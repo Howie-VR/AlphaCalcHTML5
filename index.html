@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Alpha Calc</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/parser.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <!-- 
+        	In the following markup, the class attributes for buttons are to be used in the CSS to define general looks for similar looking buttons.
+        	"darkbutton" are buttons with with dark gray backgrounds and a light font.
+        	"lightbutton" are buttons with a light background and a dark font.
+        	"bluebutton" are buttons with a light blue background and a dark font.
+        	"customstylebutton" are buttons (such as the ANS or DEG/RAD buttons) which have a customer, per button style based on the button's individual id attribute.
+        -->
+
+
+        <textarea id="expressionbox" rows="1"></textarea>
+        <textarea id="historybox" rows="1"></textarea>
+        <div id="editingfunctions">
+	        <button id="cursorleftbutton" class="darkbutton">&lsaquo;</button>
+	        <button id="cursorrightbutton" class="darkbutton">&rsaquo;</button>
+	        <button id="deletebutton" class="darkbutton" onclick="backspaceExpressionBox()">delete</button>
+	        <button id="clearbutton" class="bluebutton" onclick="clearExpressionBox()">clear</button>
+        </div>
+        
+        <!-- The functions div exists to have it's contents switched out to other views. -->
+        <div id="functions">
+        	
+        	<!-- The basicfunctions div shows a basic calculator view. -->
+        	<div id="basicfunctions">
+        		<button id="exponentiatebutton" class="darkbutton" onclick="addTextToExpressionBox('^')">^</button>
+        		<button id="multiplybutton" class="darkbutton" onclick="addTextToExpressionBox('*')">&times;</button>
+        		<button id="dividebutton" class="darkbutton" onclick="addTextToExpressionBox('/')">&divide;</button>
+        		<button id="ansbutton" class="customstylebutton">
+        			ans
+        			<span id="previousanswer">0</span>
+        		</button>
+        		<button id="7button" class="lightbutton" onclick="addTextToExpressionBox('7')">7</button>
+        		<button id="8button" class="lightbutton" onclick="addTextToExpressionBox('8')">8</button>
+        		<button id="9button" class="lightbutton" onclick="addTextToExpressionBox('9')">9</button>
+        		<button id="addbutton" class="darkbutton">+</button>
+        		<button id="4button" class="lightbutton" onclick="addTextToExpressionBox('4')">4</button>
+        		<button id="5button" class="lightbutton" onclick="addTextToExpressionBox('5')">5</button>
+        		<button id="6button" class="lightbutton" onclick="addTextToExpressionBox('6')">6</button>
+        		<button id="subtractbutton" class="darkbutton" onclick="addTextToExpressionBox('-')">&minus;</button>
+        		<button id="1button" class="lightbutton" onclick="addTextToExpressionBox('1')">1</button>
+        		<button id="2button" class="lightbutton" onclick="addTextToExpressionBox('2')">2</button>
+        		<button id="3button" class="lightbutton" onclick="addTextToExpressionBox('3')">3</button>
+        		<button id="evaluatebutton" class="bluebutton" onclick="addSolutionToHistoryBox()">=</button>
+        		<button id="commabutton" class="lightbutton" onclick="addTextToExpressionBox(',')">,</button>
+        		<button id="0button" class="lightbutton>" onclick="addTextToExpressionBox('0')">0</button>
+        		<button id="decimalbutton" class="lightbutton" onclick="addTextToExpressionBox('.')">.</button>
+        	</div> <!-- End basicfunctions div. -->
+        	
+        </div>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>

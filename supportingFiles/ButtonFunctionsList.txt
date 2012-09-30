@@ -1,0 +1,589 @@
+{
+"Root":
+	{
+	"Functions":
+		[
+			{
+				"expression":"0",
+				"tag":0,
+				"key":"0",
+				"description":"The number 0"
+			},
+			
+			{
+				"expression":"1",
+				"tag":1,
+				"key":"1",
+				"description":"The number 1"
+			},
+			
+			{
+				"expression":"2",
+				"tag":2,
+				"key":"2",
+				"description":"The number 2"
+			},
+			
+			{
+				"expression":"3",
+				"tag":3,
+				"key":"3",
+				"description":"The number 3"
+			},
+			
+			{
+				"expression":"4",
+				"tag":4,
+				"key":"4",
+				"description":"The number 4"
+			},
+			
+			{
+				"expression":"5",
+				"tag":5,
+				"key":"5",
+				"description":"The number 5"
+			},
+			
+			{
+				"expression":"6",
+				"tag":6,
+				"key":"6",
+				"description":"The number 6"
+			},
+			
+			{
+				"expression":"7",
+				"tag":7,
+				"key":"7",
+				"description":"The number 7"
+			},
+			
+			{
+				"expression":"8",
+				"tag":8,
+				"key":"8",
+				"description":"The number 8"
+			},
+			
+			{
+				"expression":"9",
+				"tag":9,
+				"key":"9",
+				"description":"The number 9"
+			},
+			
+			{
+				"expression":".",
+				"tag":10,
+				"key":".",
+				"description":"Decimal"
+			},
+			
+			{
+				"expression":"^",
+				"tag":11,
+				"key":"^",
+				"description":"Exponent"
+			},
+			
+			{
+				"expression":"*",
+				"tag":12,
+				"key":"*",
+				"description":"Multiply"
+			},
+			
+			{
+				"expression":"\/",
+				"tag":13,
+				"key":"\/",
+				"description":"Divide"
+			},
+			
+			{
+				"expression":"+",
+				"tag":14,
+				"key":"+",
+				"description":"Plus"
+			},
+			
+			{
+				"expression":"-",
+				"tag":15,
+				"key":"-",
+				"description":"Minus"
+			},
+			
+			{
+				"expression":"ClearButton",
+				"tag":16,
+				"key":"Clear",
+				"description":"Clears the current expression."
+			},
+			
+			{
+				"expression":"BackspaceButton",
+				"tag":17,
+				"key":"Back",
+				"description":"Backspaces or deletes the current selection in the expression bar."
+			},
+			
+			{
+				"expression":"Ans",
+				"tag":18,
+				"key":"Ans",
+				"description":"The last usable expression result."
+			},
+			
+			{
+				"expression":"=",
+				"tag":19,
+				"key":"=",
+				"description":"Evaluates the current expression."
+			},
+			
+			{
+				"expression":"(",
+				"tag":20,
+				"key":"(",
+				"description":"An open parenthesis"
+			},
+			
+			{
+				"expression":")",
+				"tag":21,
+				"key":")",
+				"description":"A closed parenthesis."
+			},
+			
+			{
+				"expression":"",
+				"tag":22,
+				"key":"Blank",
+				"description":"Blank Button"
+			},
+			
+			{
+				"expression":"Usually the Key, but variable",
+				"tag":23,
+				"key":"Variable",
+				"description":"Custom Button"
+			},
+			
+			{
+				"expression":"!",
+				"tag":24,
+				"key":"!",
+				"description":"Permutation"
+			},
+			
+			{
+				"expression":"√(",
+				"tag":25,
+				"key":"√",
+				"description":"Square Root"
+			},
+			
+			{
+				"expression":"^(-1)",
+				"tag":26,
+				"key":"^(-1)",
+				"description":"Multiplicitive inverse"
+			},
+			
+			{
+				"expression":"^2",
+				"tag":27,
+				"key":"^2",
+				"description":"Squares Item"
+			},
+			
+			{
+				"expression":"π",
+				"tag":28,
+				"key":"π",
+				"description":"Pi"
+			},
+			
+			{
+				"expression":"e",
+				"tag":29,
+				"key":"e",
+				"description":"Euler's Number"
+			},
+			
+			{
+				"expression":"sin(",
+				"tag":30,
+				"key":"sin",
+				"description":"Sine function"
+			},
+			
+			{
+				"expression":"cos(",
+				"tag":31,
+				"key":"cos",
+				"description":"Cosine Function"
+			},
+			
+			{
+				"expression":"tan(",
+				"tag":32,
+				"key":"tan",
+				"description":"Tangent Function"
+			},
+			
+			{
+				"expression":"asin(",
+				"tag":33,
+				"key":"asin",
+				"description":"Reverse Sine Function"
+			},
+			
+			{
+				"expression":"acos(",
+				"tag":34,
+				"key":"acos",
+				"description":"Reverse Cosine Function"
+			},
+			
+			{
+				"expression":"atan(",
+				"tag":35,
+				"key":"atan",
+				"description":"Reverse Tangent Function"
+			},
+			
+			{
+				"expression":"ln(",
+				"tag":36,
+				"key":"ln",
+				"description":"Natural Log"
+			},
+			
+			{
+				"expression":"log(",
+				"tag":37,
+				"key":"log",
+				"description":"Log Base 10"
+			},
+			
+			{
+				"expression":"e^(",
+				"tag":38,
+				"key":"e^",
+				"description":"e to a variable power"
+			},
+			
+			{
+				"expression":"Special",
+				"tag":39,
+				"key":"( )",
+				"description":"Parenthesis Wrap"
+			},
+			
+			{
+				"expression":"%",
+				"tag":40,
+				"key":"%",
+				"description":"Modulus. Ex. 5%2=1,  30%7=2, 111%37=0"
+			},
+			
+			{
+				"expression":"E",
+				"tag":41,
+				"key":"EE",
+				"description":"Scientific Notation"
+			},
+			
+			{
+				"expression":"Left",
+				"tag":42,
+				"key":"Left Arrow",
+				"description":"Moves the expression bar cursor to the left. "
+			},
+			
+			{
+				"expression":"Right",
+				"tag":43,
+				"key":"Right Arrow",
+				"description":"Moves the expression bar cursor to the right. "
+			},
+			
+			{
+				"expression":"n\/a",
+				"tag":44,
+				"key":"Deg\/Rad",
+				"description":"Alternates between Degrees and Radians"
+			},
+			
+			{
+				"expression":",
+				",
+				"tag":45,
+				"key":",
+				",
+				"description":"Seperates parameters to a function."
+			},
+			
+			{
+				"expression":"sum(",
+				"tag":46,
+				"key":"sum",
+				"description":"Adds all the parameters passed. Ex. sum(1,2,3,4) = 10"
+			},
+			
+			{
+				"expression":"count(",
+				"tag":47,
+				"key":"count",
+				"description":"Returns the number of passed parameters. Ex. count(1,2,3,4) = 4"
+			},
+			
+			{
+				"expression":"min(",
+				"tag":48,
+				"key":"min",
+				"description":"Returns the minimum of the passed parameters. Ex. min(1,2,3,4) = 1"
+			},
+			
+			{
+				"expression":"max(",
+				"tag":49,
+				"key":"max",
+				"description":"Returns the maximum of the passed parameters. Ex. max(1,2,3,4) = 4"
+			},
+			
+			{
+				"expression":"avg(",
+				"tag":50,
+				"key":"Average",
+				"description":"Returns the average of the passed parameters. Ex. median(1,2,3,4) = 2.5"
+			},
+			
+			{
+				"expression":"n√(",
+				"tag":51,
+				"key":"n√",
+				"description":"Returns the nth root of a number. Ex. n√(27,3) = 3"
+			},
+			
+			{
+				"expression":"random()",
+				"tag":52,
+				"key":"Rand",
+				"description":"Generates a random number."
+			},
+			
+			{
+				"expression":"log2(",
+				"tag":53,
+				"key":"log2",
+				"description":"Returns the base 2 log of the passed parameter."
+			},
+			
+			{
+				"expression":"Φ",
+				"tag":54,
+				"key":"Φ",
+				"description":"Returns the golden ratio, phi"
+			},
+			
+			{
+				"expression":"(π\/2)",
+				"tag":55,
+				"key":"π\/2",
+				"description":"Returns π\/2"
+			},
+			
+			{
+				"expression":"(π\/4)",
+				"tag":56,
+				"key":"π\/4",
+				"description":"Returns π\/2"
+			},
+			
+			{
+				"expression":"(√(2))",
+				"tag":57,
+				"key":"√2",
+				"description":"Returns the square root of 2"
+			},
+			
+			{
+				"expression":"and(",
+				"tag":58,
+				"key":"And",
+				"description":"Returns the bitwise anding of 2 numbers. Ex. and(4+2,4+2+1) = 6"
+			},
+			
+			{
+				"expression":"or(",
+				"tag":59,
+				"key":"Or",
+				"description":"Returns the bitwise ORing of 2 numbers. Ex. or(4+2,4+1) = 7"
+			},
+			
+			{
+				"expression":"xor(",
+				"tag":60,
+				"key":"XOR",
+				"description":"Returns the bitwise XORing of 2 numbers. Ex. xor(3,2) = 1"
+			},
+			
+			{
+				"expression":"not(",
+				"tag":61,
+				"key":"Not",
+				"description":"Returns the bitwise negation of a number. Ex. not(4) = -3"
+			},
+			
+			{
+				"expression":"<<",
+				"tag":62,
+				"key":"<<",
+				"description":"Bitwise shift left. Ex. 8 << 2 = 32"
+			},
+			
+			{
+				"expression":">>",
+				"tag":63,
+				"key":">>",
+				"description":"Bitwise shift right. Ex. 16 >> 2 = 4"
+			},
+			
+			{
+				"expression":"csc(",
+				"tag":64,
+				"key":"csc",
+				"description":"Cosecant function"
+			},
+			
+			{
+				"expression":"sec(",
+				"tag":65,
+				"key":"sec",
+				"description":"Secant function"
+			},
+			
+			{
+				"expression":"cotan(",
+				"tag":66,
+				"key":"cotan",
+				"description":"Cotangent Function"
+			},
+			
+			{
+				"expression":"acsc(",
+				"tag":67,
+				"key":"acsc",
+				"description":"Cosecant inverse function"
+			},
+			
+			{
+				"expression":"asec(",
+				"tag":68,
+				"key":"asec",
+				"description":"Secant inverse function"
+			},
+			
+			{
+				"expression":"acotan(",
+				"tag":69,
+				"key":"acotan",
+				"description":"Cotangent inverse function"
+			},
+			
+			{
+				"expression":"sinh(",
+				"tag":70,
+				"key":"sinh",
+				"description":"Hyperbolic sine function"
+			},
+			
+			{
+				"expression":"cosh(",
+				"tag":71,
+				"key":"cosh",
+				"description":"Hyperbolic cosine function"
+			},
+			
+			{
+				"expression":"tanh(",
+				"tag":72,
+				"key":"tanh",
+				"description":"Hyperbolic tangent function"
+			},
+			
+			{
+				"expression":"asinh(",
+				"tag":73,
+				"key":"asinh",
+				"description":"Hyperbolic inverse sine function"
+			},
+			
+			{
+				"expression":"acosh(",
+				"tag":74,
+				"key":"acosh",
+				"description":"Hyperbolic inverse cosine function"
+			},
+			
+			{
+				"expression":"atanh(",
+				"tag":75,
+				"key":"atanh",
+				"description":"Hyperbolic inverse tangent function"
+			},
+			
+			{
+				"expression":"csch(",
+				"tag":76,
+				"key":"csch",
+				"description":"Hyperbolic cosecant function"
+			},
+			
+			{
+				"expression":"sech(",
+				"tag":77,
+				"key":"sech",
+				"description":"Hyperbolic secant function"
+			},
+			
+			{
+				"expression":"cotanh(",
+				"tag":78,
+				"key":"cotanh",
+				"description":"Hyperbolic cotangent function"
+			},
+			
+			{
+				"expression":"acsch(",
+				"tag":79,
+				"key":"acsch",
+				"description":"Hyperbolic inverse cosecant function"
+			},
+			
+			{
+				"expression":"asec(",
+				"tag":80,
+				"key":"asec",
+				"description":"Hyperbolic inverse secant function"
+			},
+			
+			{
+				"expression":"acotanh(",
+				"tag":81,
+				"key":"acotanh",
+				"description":"Hyperbolic inverse cotangent function"
+			},
+			
+			{
+				"expression":"Tutorial",
+				"tag":82,
+				"key":"Tutorial",
+				"description":"Show the tutorial"}
+		]
+	}
+}
