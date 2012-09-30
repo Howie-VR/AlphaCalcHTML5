@@ -1,20 +1,21 @@
-var box = document.getElementById('expressionbox');
 var lastEvaluatedExpression = '';
 
 function addTextToExpressionBox(text) {
 	"use strict";
+	var box = document.getElementById('expressionbox');
 	//Check to see if the text being added is an operator. If it is, and the box is empty, the program assumes it's trying to
 	//work with the answer.
-	if (window.box.value === '' && (text === "+" || text === "-" || text === "*" || text === "/")) {
-		window.box.value += 'Ans';
+	if (box.value === '' && (text === "+" || text === "-" || text === "*" || text === "/")) {
+		box.value += 'Ans';
 	}
 	//Add the text to the bar. The text is defined in index.html as the value passed by the buttons in the onclick() method.
-	window.box.value += text;
+	box.value += text;
 }
 
 function equalsButtonPressed() {
-	if (window.box.value === '' && window.lastEvaluatedExpression != '') {
-		window.box.value = window.lastEvaluatedExpression;
+	var box = document.getElementById('expressionbox');
+	if (box.value === '' && window.lastEvaluatedExpression != '') {
+		box.value = window.lastEvaluatedExpression;
 	}
 	addSolutionToHistoryBox();
 }
@@ -28,7 +29,7 @@ function clearExpressionBox() {
 function solution() {
 	//This method is not called by a button, just inside addSolutionToHistoryBox();
 	"use strict";
-	//Parse the expression that's in the Expression window.box. Also, since the parser allows for variable substitution, set the variable 'Ans'
+	//Parse the expression that's in the Expression box. Also, since the parser allows for variable substitution, set the variable 'Ans'
 	//to the value of the history box.
 	var expression = Parser.evaluate(document.getElementById('expressionbox').value, {"Ans" : document.getElementById('historybox').value});
 	return expression;
