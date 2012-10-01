@@ -94,7 +94,6 @@ textarea {
    ========================================================================== */
 
 textarea {
-	resize: none;
 	width: 100%;
 }
 
@@ -112,7 +111,6 @@ textarea {
 	background-attachment: scroll;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 100% 100%;
 	color: #CCCCCC;
 }
 
@@ -128,7 +126,10 @@ button {
 }
 
 .lightbutton {
+	
 }
+
+
 
 
 

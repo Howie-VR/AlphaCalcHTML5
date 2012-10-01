@@ -36,8 +36,8 @@
         -->
 
 
-        <textarea id="expressionbox" rows="1"> </textarea>
-        <textarea id="historybox" rows="1"> </textarea>
+        <textarea id="expressionbox" rows="1"></textarea>
+        <textarea id="historybox" rows="1"></textarea>
         <div id="editingfunctions">
 	        <button id="cursorleftbutton" class="darkbutton">&lsaquo;</button>
 	        <button id="cursorrightbutton" class="darkbutton">&rsaquo;</button>
@@ -53,7 +53,7 @@
         		<button id="exponentiatebutton" class="darkbutton" onclick="addTextToExpressionBox('^')">^</button>
         		<button id="multiplybutton" class="darkbutton" onclick="addTextToExpressionBox('*')">&times;</button>
         		<button id="dividebutton" class="darkbutton" onclick="addTextToExpressionBox('/')">&divide;</button>
-        		<button id="ansbutton" class="customstylebutton">
+        		<button id="ansbutton" class="customstylebutton" onclick="addTextToExpressionBar(document.getElementById('historybox').value)">
         			ans
         			<span id="previousanswer">0</span>
         		</button>
