@@ -13,10 +13,15 @@ function addTextToExpressionBox(text) {
 }
 
 function equalsButtonPressed() {
+	//This method is called directly by the equals button.
+	//Get the expressionbox.
 	var box = document.getElementById('expressionbox');
+	//Check to see what's in the expressionbox. If it's empty, and there is something stored in the lastEvaluatedExpression,
+	//then set the box's value to the last expression
 	if (box.value === '' && window.lastEvaluatedExpression != '') {
 		box.value = window.lastEvaluatedExpression;
 	}
+	//Then do the solution process.
 	addSolutionToHistoryBox();
 }
 
@@ -37,7 +42,7 @@ function solution() {
 
 function addSolutionToHistoryBox() {
 	"use strict";
-	//Get the solution. This method is called directly by the equals button.
+	//Get the solution.
 	var solutionString = solution();
 	//Set the history box and Answer button values to the solution.
 	document.getElementById('historybox').value = solutionString;
