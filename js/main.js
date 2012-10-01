@@ -41,7 +41,7 @@ function addSolutionToHistoryBox() {
 	var solutionString = solution();
 	//Set the history box and Answer button values to the solution.
 	document.getElementById('historybox').value = solutionString;
-	document.getElementById('previousanswer').value = solutionString;
+	document.getElementById('previousanswer').innerText = solutionString;
 	//Save the expression to the lastEvaluatedExpression var.
 	lastEvaluatedExpression = document.getElementById('expressionbox').value;
 	//Clear the expression box.
