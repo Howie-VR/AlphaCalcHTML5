@@ -36,7 +36,21 @@ function solution() {
 	"use strict";
 	//Parse the expression that's in the Expression box. Also, since the parser allows for variable substitution, set the variable 'Ans'
 	//to the value of the history box.
-	var expression = Parser.evaluate(document.getElementById('expressionbox').value, {"Ans" : document.getElementById('historybox').value});
+	var expression = document.getElementById('expressionbox').value;
+	expression = checkForAndReplaceAns(expression);
+	var answer = Parser.evaluate(expression);
+	return answer;
+}
+
+function checkForAndReplaceAns(expression) {
+	//Check for the string 'Ans' inside the expression.
+	var locationOfAns = expression.search('Ans');
+	//Check if locationOfAns didn't return -1 (which means that there is 'Ans' in the expression)
+	if (locationOfAns != -1) {
+		//If 'Ans' is there, replace it with the value in the history box.
+		var newExpression = expression.substring(0, (locationOfAns - 1)) + document.getElementById('historybox').value + expression.substring((locationOfAns + 3), expression.length);
+		expression = newExpression;
+	}
 	return expression;
 }
 
