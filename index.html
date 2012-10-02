@@ -14,8 +14,9 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="js/dragdealer/dragdealer.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        
+ 		<script src="js/dragdealer/dragdealer.js"</script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
@@ -53,7 +54,7 @@
         		<button id="exponentiatebutton" class="darkbutton" onclick="addTextToExpressionBox('^')">^</button>
         		<button id="multiplybutton" class="darkbutton" onclick="addTextToExpressionBox('*')">&times;</button>
         		<button id="dividebutton" class="darkbutton" onclick="addTextToExpressionBox('/')">&divide;</button>
-        		<button id="ansbutton" class="customstylebutton" onclick="addTextToExpressionBar(document.getElementById('historybox').value)">
+        		<button id="ansbutton" class="customstylebutton" onclick="addTextToExpressionBox(document.getElementById('previousanswer').innerText)">
         			ans
         			<span id="previousanswer">0</span>
         		</button>
