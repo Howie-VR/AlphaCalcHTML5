@@ -173,7 +173,7 @@
 				"expression":"!",
 				"tag":24,
 				"key":"!",
-				"description":"Permutation"
+				"description":"Factorial"
 			},
 			
 			{
@@ -584,4 +584,8 @@
 				"description":"Show the tutorial"
 			}
 		]
+<<<<<<< HEAD
 }
+=======
+	}
+>>>>>>> Initial commit with new AlphaParser.

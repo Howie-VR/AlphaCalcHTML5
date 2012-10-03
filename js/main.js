@@ -1,4 +1,5 @@
 var lastEvaluatedExpression = '';
+var parser = new Parser();
 
 function addTextToExpressionBox(text) {
 	"use strict";
@@ -36,9 +37,14 @@ function solution() {
 	"use strict";
 	//Parse the expression that's in the Expression box. Also, since the parser allows for variable substitution, set the variable 'Ans'
 	//to the value of the history box.
+<<<<<<< HEAD
 	var expression = document.getElementById('expressionbox').value;
 	expression = expression.replace('Ans', document.getElementById('historybox').value);
 	var answer = Parser.evaluate(expression);
+=======
+	var rootExpressionNode = parser.parse(document.getElementById('expressionbox').value);
+	var answer = rootExpressionNode.evaluate();
+>>>>>>> Initial commit with new AlphaParser.
 	return answer;
 }
 
