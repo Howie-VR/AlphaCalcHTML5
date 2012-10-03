@@ -39,16 +39,13 @@ function solution() {
 	//Parse the expression that's in the Expression box. Also, since the parser allows for variable substitution, set the variable 'Ans'
 	//to the value of the history box.
 	var expression = document.getElementById('expressionbox').value;
-<<<<<<< HEAD
 	//expression = expression.replace('Ans', document.getElementById('historybox').value);
 	var rootExpressionNode = parser.parse(document.getElementById('expressionbox').value);
 	var answer = rootExpressionNode.evaluateExpression();
-=======
 	//Replace 'Ans' in the box with the value in the history box.
 	expression = expression.replace('Ans', document.getElementById('historybox').value);
 	//Parse expression using parser.js.
 	var answer = Parser.evaluate(expression);
->>>>>>> Changed Ans to something more useful
 	return answer;
 }
 
