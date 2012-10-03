@@ -21,7 +21,7 @@ function add(left, right){
 function subtract(left, right){
 	// In the event that the left node is null, treat it as the additive inverse of the right node
 	if(left == null){
-		return right.evaluateExpression * -1;
+		return right.evaluateExpression() * -1;
 	}
 	return left.evaluateExpression() - right.evaluateExpression();
 }

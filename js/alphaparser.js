@@ -27,9 +27,6 @@ function ExpressionNode(operation, left, right){
 			}
 			return this.operation;
 		}else{
-			if(this.left == null){
-				console.log("null");
-			}
 			return this.operation(this.left, this.right);
 		}
 	}
