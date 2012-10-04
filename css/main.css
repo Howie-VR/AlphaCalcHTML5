@@ -23,16 +23,6 @@ body {
     line-height: 1.4;
 }
 
-.fixForTextAreaOverflow {
-	padding-right: 6px;
-}
-
-label {
-	padding: 0;
-	marign: 0;
-	display: block;
-}
-
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate.
@@ -85,6 +75,7 @@ fieldset {
  */
 
 textarea {
+    resize: vertical;
 }
 
 /* ==========================================================================

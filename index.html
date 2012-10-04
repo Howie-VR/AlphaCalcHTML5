@@ -37,10 +37,9 @@
         	"customstylebutton" are buttons (such as the ANS or DEG/RAD buttons) which have a customer, per button style based on the button's individual id attribute.
         -->
 
-		<label class="fixForTextAreaOverflow">
+
         <textarea id="expressionbox" rows="1"></textarea>
-        <textarea id="historybox" readonly="true" rows="1"></textarea>
-       	</label>
+        <textarea id="historybox" rows="1"></textarea>
         <div id="editingfunctions">
 	        <button id="cursorleftbutton" class="darkbutton">&lsaquo;</button>
 	        <button id="cursorrightbutton" class="darkbutton">&rsaquo;</button>
@@ -56,7 +55,7 @@
         		<button id="exponentiatebutton" class="darkbutton" onclick="addTextToExpressionBox('^')">^</button>
         		<button id="multiplybutton" class="darkbutton" onclick="addTextToExpressionBox('*')">&times;</button>
         		<button id="dividebutton" class="darkbutton" onclick="addTextToExpressionBox('/')">&divide;</button>
-        		<button id="ansbutton" class="customstylebutton" onclick="addTextToExpressionBox('@')">
+        		<button id="ansbutton" class="customstylebutton" onclick="addTextToExpressionBox(document.getElementById('previousanswer').innerText)">
         			ans
         			<span id="previousanswer">0</span>
         		</button>
