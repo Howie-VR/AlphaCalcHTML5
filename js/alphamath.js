@@ -40,6 +40,13 @@ function pow(left, right) {
 
 function mod(left, right) {
 	return right.evaluateExpression(0) % right.evaluateExpression(1);
+<<<<<<< HEAD
+=======
+}
+
+function abs(left, right) {
+	return Math.abs(right.evaluateExpression());
+>>>>>>> Fixed arctrig functions
 }
 
 function recip(left, right) {
@@ -67,7 +74,11 @@ function ln(left, right) {
 
 function log(left, right) {
 	//We have to use the Change of Base formula to get a real logarithn. First World Problems.
+<<<<<<< HEAD
 	return Math.log() / Math.log(10);
+=======
+	return Math.log(right.evaluateExpression()) / Math.log(10);
+>>>>>>> Fixed arctrig functions
 }
 
 function logBase(left, right) {
@@ -87,6 +98,7 @@ function tan(left, right) {
 	return Math.tan(right.evaluateExpression());
 }
 
+<<<<<<< HEAD
 //The arc functions are just the regular functions inverted.
 
 function asin(left, right) {
@@ -123,8 +135,43 @@ function acsc(left, right) {
 
 function acot(left, right) {
 	return Math.pow(cot(null, right), -1);
+=======
+function sec(left, right) {
+	return inv(null, sin(null, right));
 }
 
+function csc(left, right) {
+	return inv(null, cos(null, right));
+}
+
+function cot(left, right) {
+	return inv(null, tan(null, right));
+}
+
+function asin(left, right) {
+	return Math.asin(right.evaluateExpression());
+}
+
+function acos(left, right) {
+	return Math.acos(right.evaluateExpression());
+}
+
+function atan(left, right) {
+	return Math.atan(right.evaluateExpression());
+}
+
+function asec(left, right) {
+	return inv(null, acos(null, right));
+}
+
+function acsc(left, right) {
+	return inv(null, asin(null, right));
+}
+
+function acot(left, right) {
+	return inv(null, atan(null, right));
+>>>>>>> Fixed arctrig functions
+}
 
 function avg(left, right) {
 	var average = 0;
