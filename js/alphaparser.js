@@ -13,22 +13,53 @@
  */
 
 // Create a simple ExpressionNode structure, which expects to hold a mathematical operation and links to left and right subnodes.
+// If operation is NOT an array, but the calling environment is expecting one (say because it is a multi-parameter function) then the ExpressionNode will behave as an array of length 1.
 function ExpressionNode(operation, left, right){
 	this.operation = operation;
 	this.left = left;
 	this.right = right;
 	
 	this.evaluateExpression = evaluateExpression;
+	this.getNodeAt = getNodeAt;
+	this.getLength = getLength;
 	
-	function evaluateExpression(){
+	// Evaluates the expression tree starting at this node.
+	// If the operation is a number, return it (multiplying by the right node if it exists)
+	// If an array, use the parameter and evaluate the expression at that index in the array.
+	// And if neither, assume it's a function and call that function passing the left and right nodes.
+	function evaluateExpression(n){
 		if(typeof this.operation == "number"){
 			if(this.right != null){
 				return this.operation * this.right.evaluateExpression();
 			}
 			return this.operation;
+		}else if(typeof this.operation == "object"){
+			return operation[n].evaluateExpression();
 		}else{
 			return this.operation(this.left, this.right);
 		}
+	}
+	
+	// Only useful if the operation is an array, returns the node at index n in the array.
+	// If operation is not an array, but n=0 is passed, it will return this node.
+	// Returns null otherwise.
+	function getNodeAt(n){
+		if(typeof operation == "object"){
+			return operation[n];
+		}else if(n == 0){
+			return this;
+		}
+		return null;
+	}
+	
+	// Only useful if the operation is an array, returns the length of the array.
+	// If the operation is not an array, and right does not equal null returns 1, implying that there is an array of length one.
+	// In this case, the evaluateExpression method will ignore the parameter it's passed anyway and just evaluate this tree.
+	function getLength(){
+		if(typeof operation == "object"){
+			return operation.length;
+		}
+		return 1;
 	}
 }
 
@@ -99,7 +130,7 @@ function Parser(){
 				var newNode = new ExpressionNode(getFunctionFromOperator(token), null, null);
 				PAP(nodeStack, newNode);
 			}else if(token == ","){ // Commas indicate that the current function takes multiple parameters
-				var newNode = IPARC(stack)
+				var newNode = IPARC(nodeStack)
 				listArray.push(newNode);
 			}else if(token == "("){ // An open-parenthesis is just used as a marker, it should never be evaluated in the tree.
 				var newNode = new ExpressionNode("(", null, null);

@@ -39,7 +39,7 @@ function pow(left, right) {
 }
 
 function mod(left, right) {
-	return left.evaluateExpression() % right.evaluateExpression();
+	return right.evaluateExpression(0) % right.evaluateExpression(1);
 }
 
 function recip(left, right) {
@@ -49,7 +49,7 @@ function recip(left, right) {
 
 function inv(left, right) {
 	//Raise to the -1 power.
-	return Math.pow(right, -1);
+	return Math.pow(right.evaluateExpression(), -1);
 }
 
 function sqrt(left, right) {
@@ -57,22 +57,22 @@ function sqrt(left, right) {
 }
 
 function nthrt(left, right) {
-	return pow(left.evaluateExpression(), recip(right.evaluateExpression()));
+	return Math.pow(right.evaluateExpression(0), recip(null, right.getNodeAt(1)));
 }
 
 function ln(left, right) {
 	//Javascript's 'log' function is actually the natural log. Weird, I know.
-	return Math.log(null, right.evaluateExpression());
+	return Math.log(right.evaluateExpression());
 }
 
 function log(left, right) {
 	//We have to use the Change of Base formula to get a real logarithn. First World Problems.
-	return ln(left.evaluateExpression()) / ln(10);
+	return Math.log() / Math.log(10);
 }
 
 function logBase(left, right) {
 	//Change of base with a customizable base.
-	return ln(right.evaluateExpression()) / ln(left.evaluateExpression());
+	return Math.log(right.evaluateExpression(0)) / Math.log(right.evaluateExpression(1));
 }
 
 function sin(left, right) {
@@ -90,69 +90,67 @@ function tan(left, right) {
 //The arc functions are just the regular functions inverted.
 
 function asin(left, right) {
-	return inv(sin(null, right.evaluateExpression()));
+	return Math.pow(sin(null, right), -1);
 }
 
 function acos(left, right) {
-	return inv(cos(null, right.evaluateExpression()));
+	return Math.pow(cos(null, right), -1);
 }
 
 function atan(left, right) {
-	return inv(tan(null, right.evaluateExpression()));
+	return Math.pow(tan(null, right), -1);
 }
 
 function sec(left, right) {
-	return recip(sin(null, right.evaluateExpression()));
+	return Math.pow(sin(null, right), -1);
 }
 
 function csc(left, right) {
-	return recip(cos(null, right.evaluateExpression()));
+	return Math.pow(cos(null, right), -1);
 }
 
 function cot(left, right) {
-	return recip(tan(null, right.evaluateExpression()));
+	return 1 / tan(null, right);
 }
 
 function asec(left, right) {
-	return inv(sec(null, right.evaluateExpression()));
+	return Math.pow(sec(null, right), -1);
 }
 
 function acsc(left, right) {
-	return inv(csc(null, right.evaluateExpression()));
+	return Math.pow(csc(null, right), -1);
 }
 
 function acot(left, right) {
-	return inv(cot(null, right.evaluateExpression()));
+	return Math.pow(cot(null, right), -1);
 }
 
 
 function avg(left, right) {
 	var average = 0;
-	var i = 0;
-	for (i = 0; i < right.length; i++) {
-		average += right[i];
+	for (var i = 0; i < right.getLength(); i++) {
+		average += right.evaluateExpression(i);
 	}
 	return average / right.length;
 }
 
 function sum(left, right) {
 	var total = 0;
-	var i = 0;
-	for (i = 0; i < right.length; i++) {
-		total += right[i];
+	for (var i = 0; i < right.getLength(); i++) {
+		total += right.evaluateExpression(i);
 	}
 	return total;
 }
 
 function min(left, right) {
-	var minimum = right[0];
-	var i = 0;
-	for (i = 0; i < right.length; i++) {
-		if (right[i] < min) {
-			minimum = right[i];
+	var min = right.evaluateExpression(0);
+	for (var i = 1; i < right.getLength(); i++) {
+		var m = right.evaluateExpression(i)
+		if (m < min) {
+			min = m;
 		}
 	}
-	return minimum;
+	return min;
 }
 
 function count(left, right) {
@@ -160,14 +158,14 @@ function count(left, right) {
 }
 
 function max(left, right) {
-	var maximum = right[0];
-	var i = 0;
-	for (i = 0; i < right.length; i++) {
-		if (right[i] > max) {
-			maximum = right[i];
+	var max = right.evaluateExpression(0);
+	for (var i = 1; i < right.getLength(); i++) {
+		var m = right.evaluateExpression(i);
+		if (m > max) {
+			max = m;
 		}
 	}
-	return maximum;
+	return max;
 }
 
 function random(left, right) {
