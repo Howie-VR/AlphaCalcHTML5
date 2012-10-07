@@ -9,8 +9,14 @@ function addTextToExpressionBox(text) {"use strict";
 	if ((box.value === '' && (text === "+" || text === "*" || text === "/")) || text === "@") {
 		box.value += 'Ans';
 	}
+	if (text === 'leftParen') {
+		box.value += '(';
+	}
+	if (text === 'rightParen') {
+		box.value += ')';
+	}
 	//Add the text to the bar. The text is defined in index.html as the value passed by the buttons in the onclick() method.
-	if (text !== '@') {
+	if (text !== '@' && text !== 'leftParen' && text !== 'rightParen') {
 		box.value += text;
 	}
 }

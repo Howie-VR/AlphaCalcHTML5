@@ -91,44 +91,6 @@ function tan(left, right) {
 	return Math.tan(right.evaluateExpression());
 }
 
-//The arc functions are just the regular functions inverted.
-
-function asin(left, right) {
-	return Math.pow(sin(null, right), -1);
-}
-
-function acos(left, right) {
-	return Math.pow(cos(null, right), -1);
-}
-
-function atan(left, right) {
-	return Math.pow(tan(null, right), -1);
-}
-
-function sec(left, right) {
-	return Math.pow(sin(null, right), -1);
-}
-
-function csc(left, right) {
-	return Math.pow(cos(null, right), -1);
-}
-
-function cot(left, right) {
-	return 1 / tan(null, right);
-}
-
-function asec(left, right) {
-	return Math.pow(sec(null, right), -1);
-}
-
-function acsc(left, right) {
-	return Math.pow(csc(null, right), -1);
-}
-
-function acot(left, right) {
-	return Math.pow(cot(null, right), -1);
-}
-
 function sec(left, right) {
 	return inv(null, sin(null, right));
 }
@@ -219,6 +181,58 @@ function factorial(left, right) {
 		factorial = factorial * right.evaluateExpression();
 	}
 	return factorial
+}
+
+function frac(left, right){
+
+	if(!right){
+		return '';
+	}
+	right = right.evaluateExpression();
+	if (Math.round(right) === right) {
+		return right;
+	}
+	whole = String(right).split('.')[0];
+	right = parseFloat("."+String(right).split('.')[1]);
+	num = "1";
+	for(z=0; z<String(right).length-2; z++){
+		num += "0";
+	}
+	right = right*num;
+	num = parseInt(num);
+	for(z=2; z<right+1; z++){
+		if(right%z==0 && num%z==0){
+			right = right/z;
+			num = num/z;
+			z=2;
+		}
+	}
+	//if format of fraction is xx/xxx
+	if (right.toString().length == 2 && 
+			num.toString().length == 3) {
+                //reduce by removing trailing 0's
+		right = Math.round(Math.round(right)/10);
+		num = Math.round(Math.round(num)/10);
+	}
+	//if format of fraction is xx/xx
+	else if (right.toString().length == 2 && 
+			num.toString().length == 2) {
+		right = Math.round(right/10);
+		num = Math.round(num/10);
+	}
+	//get highest common factor to simplify
+	var t = HCF(right, num);
+ 
+	//return the fraction after simplifying it
+	return ((whole==0)?"" : whole+" ")+right/t+"/"+num/t;
+}
+
+function HCF(left, right) { 
+	var LEFT = left, RIGHT = right
+	while (true) {
+		if (!(LEFT %= RIGHT)) return RIGHT
+		if (!(RIGHT %= LEFT)) return LEFT 
+	} 
 }
 
 function random(left, right) {
