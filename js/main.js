@@ -6,19 +6,11 @@ function addTextToExpressionBox(text) {"use strict";
 	var box = document.getElementById('expressionbox');
 	//Check to see if the text being added is an operator. If it is, and the box is empty, the program assumes it's trying to
 	//work with the answer.
-	if ((box.value === '' && (text === "+" || text === "*" || text === "/")) || text === "@") {
+	if ((box.value === '' && (text === "+" || text === "*" || text === "/"))) {
 		box.value += 'Ans';
 	}
-	if (text === 'leftParen') {
-		box.value += '(';
-	}
-	if (text === 'rightParen') {
-		box.value += ')';
-	}
 	//Add the text to the bar. The text is defined in index.html as the value passed by the buttons in the onclick() method.
-	if (text !== '@' && text !== 'leftParen' && text !== 'rightParen') {
 		box.value += text;
-	}
 }
 
 function clearExpressionBox() {"use strict";

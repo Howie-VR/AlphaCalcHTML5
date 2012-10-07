@@ -43,8 +43,8 @@
         <textarea id="expressionbox" rows="1" placeholder="Enter expression..." autofocus="autofocus"></textarea>
         <textarea id="historybox" rows="1" readonly="readonly" placeholder="Expression history..."></textarea>
         <div id="editingfunctions">
-	        <button id="cursorleftbutton" class="darkbutton" onclick="addTextToExpressionBox('leftParen')">&#40;</button>
-	        <button id="cursorrightbutton" class="darkbutton" onclick="addTextToExpressionBox('rightParen')">&#41;</button>
+	        <button id="cursorleftbutton" class="darkbutton" onclick="addTextToExpressionBox('(')">&#40;</button>
+	        <button id="cursorrightbutton" class="darkbutton" onclick="addTextToExpressionBox(')')">&#41;</button>
 	        <button id="deletebutton" class="darkbutton" onclick="backspaceExpressionBox()">delete</button>
 	        <button id="clearbutton" class="bluebutton" onclick="clearExpressionBox()">clear</button>
         </div>
@@ -54,10 +54,10 @@
         	
         	<!-- The basicfunctions div shows a basic calculator view. -->
         	<div id="basicfunctions">
-        		<button id="exponentiatebutton" class="darkbutton" onclick="addTextToExpressionBox('^')">^</button>
+        		<button id="exponentiatebutton" class="darkbutton" onclick="addTextToExpressionBox(('^'))">^</button>
         		<button id="multiplybutton" class="darkbutton" onclick="addTextToExpressionBox('*')">&times;</button>
         		<button id="dividebutton" class="darkbutton" onclick="addTextToExpressionBox('/')">&divide;</button>
-        		<button id="ansbutton" class="customstylebutton" onclick="addTextToExpressionBox('@')">
+        		<button id="ansbutton" class="customstylebutton" onclick="addTextToExpressionBox('Ans')">
         			ans
         			<span id="previousanswer">0</span>
         		</button>
