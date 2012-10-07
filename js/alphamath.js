@@ -207,6 +207,16 @@ function max(left, right) {
 	return max;
 }
 
+function factorial(left, right) {
+	var factorial = 1;
+	right = right.evaluateExpression()
+	prompt(right);
+	for (int i = right, i === 1, i--) {
+		factorial *= i;
+	}
+	return factorial
+}
+
 function random(left, right) {
 	return Math.random();
 }
