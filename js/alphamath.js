@@ -207,11 +207,16 @@ function max(left, right) {
 	return max;
 }
 
+// Factorial, as the only unary operator that follows its operand rather than preceding it, evaluates it's left subtree instead of it's right
+// If the right subtree exists, it is multiplied by the factorial before being returned, as the factorial expression is treated as number when parsing
 function factorial(left, right) {
 	var factorial = 1;
-	right = right.evaluateExpression()
-	for (var i = 2; i <= right; i++) {
+	leftValue = left.evaluateExpression()
+	for (var i = 2; i <= leftValue; i++) {
 		factorial *= i;
+	}
+	if(right != null){
+		factorial = factorial * right.evaluateExpression();
 	}
 	return factorial
 }

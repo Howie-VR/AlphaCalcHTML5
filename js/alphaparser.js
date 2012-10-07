@@ -83,6 +83,7 @@ function Parser(){
 	this.multiply = getFunctionFromToken("multiply");
 	this.divide = getFunctionFromToken("divide");
 	this.pow = getFunctionFromToken("pow");
+	this.factorial = getFunctionFromToken("factorial")
 	
 	function parse(expressionString){
 		
@@ -126,7 +127,7 @@ function Parser(){
 				}else{
 					nodeStack.push(newNode);
 				}
-			}else if(isOperator(token)){
+			}else if(isOperator(token) || token == "!"){ // A ! (factorial) is treated as an operator when first parsing, but from then on is just treated as another number. It is the only real unary operator as of now, and is the only node that will have a single LEFT child instead of a single right child.
 				var newNode = new ExpressionNode(getFunctionFromOperator(token), null, null);
 				PAP(nodeStack, newNode);
 			}else if(token == ","){ // Commas indicate that the current function takes multiple parameters
@@ -285,6 +286,8 @@ function Parser(){
 				return divide;
 			case "^":
 				return pow;
+			case "!":
+				return factorial;
 		}
 	}
 	
