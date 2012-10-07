@@ -92,15 +92,15 @@ function tan(left, right) {
 }
 
 function sec(left, right) {
-	return inv(null, sin(null, right));
+	return Math.pow(sin(null, right), -1);
 }
 
 function csc(left, right) {
-	return inv(null, cos(null, right));
+	return Math.pow(cos(null, right), -1);
 }
 
 function cot(left, right) {
-	return inv(null, tan(null, right));
+	return Math.pow(tan(null, right), -1);
 }
 
 function asin(left, right) {
@@ -116,15 +116,15 @@ function atan(left, right) {
 }
 
 function asec(left, right) {
-	return inv(null, acos(null, right));
+	return Math.pow(acos(null, right), -1);
 }
 
 function acsc(left, right) {
-	return inv(null, asin(null, right));
+	return Math.pow(asin(null, right), -1);
 }
 
 function acot(left, right) {
-	return inv(null, atan(null, right));
+	return Math.pow(atan(null, right), -1);
 }
 
 function avg(left, right) {
@@ -173,7 +173,7 @@ function max(left, right) {
 // If the right subtree exists, it is multiplied by the factorial before being returned, as the factorial expression is treated as number when parsing
 function factorial(left, right) {
 	var factorial = 1;
-	leftValue = left.evaluateExpression()
+	var leftValue = left.evaluateExpression()
 	for (var i = 2; i <= leftValue; i++) {
 		factorial *= i;
 	}
@@ -183,59 +183,22 @@ function factorial(left, right) {
 	return factorial
 }
 
-function frac(left, right){
-
-	if(!right){
-		return '';
-	}
-	right = right.evaluateExpression();
-	if (Math.round(right) === right) {
-		return right;
-	}
-	whole = String(right).split('.')[0];
-	right = parseFloat("."+String(right).split('.')[1]);
-	num = "1";
-	for(z=0; z<String(right).length-2; z++){
-		num += "0";
-	}
-	right = right*num;
-	num = parseInt(num);
-	for(z=2; z<right+1; z++){
-		if(right%z==0 && num%z==0){
-			right = right/z;
-			num = num/z;
-			z=2;
-		}
-	}
-	//if format of fraction is xx/xxx
-	if (right.toString().length == 2 && 
-			num.toString().length == 3) {
-                //reduce by removing trailing 0's
-		right = Math.round(Math.round(right)/10);
-		num = Math.round(Math.round(num)/10);
-	}
-	//if format of fraction is xx/xx
-	else if (right.toString().length == 2 && 
-			num.toString().length == 2) {
-		right = Math.round(right/10);
-		num = Math.round(num/10);
-	}
-	//get highest common factor to simplify
-	var t = HCF(right, num);
- 
-	//return the fraction after simplifying it
-	return ((whole==0)?"" : whole+" ")+right/t+"/"+num/t;
+function round(left, right) {
+	return Math.round(right.evaluateExpression());
 }
 
-function HCF(left, right) { 
-	var LEFT = left, RIGHT = right
-	while (true) {
-		if (!(LEFT %= RIGHT)) return RIGHT
-		if (!(RIGHT %= LEFT)) return LEFT 
-	} 
-}
-
-function random(left, right) {
+function rndm(left, right) {
 	return Math.random();
 }
 
+function molesToAtoms(left, right) {
+	right = right.evaluateExpression();
+	var avogadro = 6.22 * Math.pow(10, 23);
+	return right * avogadro;
+}
+
+function atomsToMoles(left, right) {
+	right = right.evaluateExpression();
+	var avogadro = 6.22 * Math.pow(10, 23);
+	return right / avogadro;
+}
