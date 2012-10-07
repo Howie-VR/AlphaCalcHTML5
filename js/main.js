@@ -1,4 +1,5 @@
 var lastEvaluatedExpression = '';
+var lastAnswer = 0;
 var parser = new Parser();
 
 function addTextToExpressionBox(text) {"use strict";
@@ -6,7 +7,7 @@ function addTextToExpressionBox(text) {"use strict";
 	//Check to see if the text being added is an operator. If it is, and the box is empty, the program assumes it's trying to
 	//work with the answer.
 	if ((box.value === '' && (text === "+" || text === "*" || text === "/")) || text === "@") {
-		box.value += '(Ans)';
+		box.value += 'Ans';
 	}
 	//Add the text to the bar. The text is defined in index.html as the value passed by the buttons in the onclick() method.
 	if (text !== '@') {
@@ -25,7 +26,6 @@ function solution() {
 	//Parse the expression that's in the Expression box. Also, since the parser allows for variable substitution, set the variable 'Ans'
 	//to the value of the history box.
 	var expression = document.getElementById('expressionbox').value;
-	expression = expression.replace('Ans', document.getElementById('historybox').value);
 	var rootExpressionNode = parser.parse(document.getElementById('expressionbox').value);
 	var answer = rootExpressionNode.evaluateExpression();
 	return answer;
@@ -34,6 +34,7 @@ function solution() {
 function addSolutionToHistoryBox() {"use strict";
 	//Get the solution.
 	var solutionString = solution();
+	lastAnswer = solutionString;
 	//Set the history box and Answer button values to the solution.
 	document.getElementById('historybox').value = solutionString;
 	document.getElementById('previousanswer').innerText = solutionString;
@@ -63,4 +64,17 @@ function backspaceExpressionBox() {"use strict";
 	var newString = expressionString.substring(0, (expressionString.length - 1));
 	//Set the expressionbox to the new string.
 	document.getElementById('expressionbox').value = newString;
+}
+
+// Function which evaluates to the previous answer
+function Ans(left, right){
+	var answer = lastAnswer;
+	if(right != null){
+		answer *= right.evaluateExpression();
+	}
+	return answer;
+}
+
+function ans(left, right){
+	return Ans(left, right);
 }

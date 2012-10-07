@@ -156,8 +156,8 @@ function Parser(){
 				PARC(nodeStack, newNode);
 			}else{ // In all other scenarios, assume that the token is going to be a function.
 				var nextChar = expressionString.charAt(index + 1);
-				// Keep pulling characters until we reach an open-paren, getting the entire function name.
-				while(index < expressionString.length && nextChar != "("){
+				// Keep pulling characters until we reach an open-paren, comma or an operator, getting the entire function name.
+				while(index < expressionString.length && nextChar != "(" && nextChar !="," && nextChar != "!" && !(isOperator(nextChar))){
 					token = token.concat(nextChar);
 					index++;
 					nextChar = expressionString.charAt(index + 1);
