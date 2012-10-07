@@ -211,7 +211,7 @@ function factorial(left, right) {
 	var factorial = 1;
 	right = right.evaluateExpression()
 	prompt(right);
-	for (int i = right, i === 1, i--) {
+	for (var i = 2; i <= right; i++) {
 		factorial *= i;
 	}
 	return factorial
