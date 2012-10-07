@@ -1,8 +1,7 @@
 var lastEvaluatedExpression = '';
 var parser = new Parser();
 
-function addTextToExpressionBox(text) {
-	"use strict";
+function addTextToExpressionBox(text) {"use strict";
 	var box = document.getElementById('expressionbox');
 	//Check to see if the text being added is an operator. If it is, and the box is empty, the program assumes it's trying to
 	//work with the answer.
@@ -15,8 +14,7 @@ function addTextToExpressionBox(text) {
 	}
 }
 
-function clearExpressionBox() {
-	"use strict";
+function clearExpressionBox() {"use strict";
 	//Set the ExpressionBox to an empty string.
 	document.getElementById('expressionbox').value = '';
 }
@@ -33,8 +31,7 @@ function solution() {
 	return answer;
 }
 
-function addSolutionToHistoryBox() {
-	"use strict";
+function addSolutionToHistoryBox() {"use strict";
 	//Get the solution.
 	var solutionString = solution();
 	//Set the history box and Answer button values to the solution.
@@ -59,12 +56,11 @@ function equalsButtonPressed() {
 	addSolutionToHistoryBox();
 }
 
-function backspaceExpressionBox() {
-	"use strict";
+function backspaceExpressionBox() {"use strict";
 	//Get the expressionbox's value.
 	var expressionString = document.getElementById('expressionbox').value;
 	//Return the same string, minus the last letter.
 	var newString = expressionString.substring(0, (expressionString.length - 1));
-	//Set the expressionbox to the new string. 
+	//Set the expressionbox to the new string.
 	document.getElementById('expressionbox').value = newString;
 }
