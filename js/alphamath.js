@@ -2,7 +2,7 @@
  * Written by Howie Jordan
  * Copyright (c) 2012 Valley Rocket, LLC
  * Open Source license pending.
- * 
+ *
  * All available math functions defined herein.
  * In accordance with the expected format for the expression tree, all math functions herein follow the followin rules:
  * 1) The function must have the same name as the character string an end-user would expect to type to invoke it.
@@ -10,8 +10,8 @@
  * 2) All functions must take two parameters. These are the node's left and right children. In the case of non-operation math functions,
  *    i.e. any function save for those representing +,-,*,/, and ^, will likely only use the right child. If the function takes more than one paramater,
  *    such as "min" which calculates the minimum value from a list of values, the right child will contain an array of expression trees.
- * 
- * 
+ *
+ *
  */
 
 function add(left, right) {
@@ -210,7 +210,6 @@ function max(left, right) {
 function factorial(left, right) {
 	var factorial = 1;
 	right = right.evaluateExpression()
-	prompt(right);
 	for (var i = 2; i <= right; i++) {
 		factorial *= i;
 	}

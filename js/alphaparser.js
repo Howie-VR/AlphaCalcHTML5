@@ -28,12 +28,12 @@ function ExpressionNode(operation, left, right) {
 	// If an array, use the parameter and evaluate the expression at that index in the array.
 	// And if neither, assume it's a function and call that function passing the left and right nodes.
 	function evaluateExpression(n) {
-		if ( typeof this.operation == "number") {
+		if ( typeof this.operation === "number") {
 			if (this.right != null) {
 				return this.operation * this.right.evaluateExpression();
 			}
 			return this.operation;
-		} else if ( typeof this.operation == "object") {
+		} else if ( typeof this.operation === "object") {
 			return operation[n].evaluateExpression();
 		} else {
 			return this.operation(this.left, this.right);
@@ -44,9 +44,9 @@ function ExpressionNode(operation, left, right) {
 	// If operation is not an array, but n=0 is passed, it will return this node.
 	// Returns null otherwise.
 	function getNodeAt(n) {
-		if ( typeof operation == "object") {
+		if ( typeof operation === "object") {
 			return operation[n];
-		} else if (n == 0) {
+		} else if (n === 0) {
 			return this;
 		}
 		return null;
@@ -56,7 +56,7 @@ function ExpressionNode(operation, left, right) {
 	// If the operation is not an array, and right does not equal null returns 1, implying that there is an array of length one.
 	// In this case, the evaluateExpression method will ignore the parameter it's passed anyway and just evaluate this tree.
 	function getLength() {
-		if ( typeof operation == "object") {
+		if ( typeof operation === "object") {
 			return operation.length;
 		}
 		return 1;
@@ -94,11 +94,11 @@ function Parser() {
 		while (index < expressionString.length) {
 			var token = expressionString.charAt(index);
 
-			if (isValidNumber(token) || token == ".") {
+			if (isValidNumber(token) || token === ".") {
 
 				//Token is a number. First we ensure that we grab the whole number.
 				var nextChar = expressionString.charAt(index + 1);
-				while ((index < expressionString.length) && (isValidNumber(nextChar) || nextChar == ".")) {
+				while ((index < expressionString.length) && (isValidNumber(nextChar) || nextChar === ".")) {
 					token = token.concat(nextChar);
 					index++;
 					nextChar = expressionString.charAt(index + 1);
@@ -114,11 +114,11 @@ function Parser() {
 						var nextOperator = expressionString.charAt(index + 1);
 
 						// If the nextOperator is of lesser precedence (or less than or equal if the next is division) then PARC instead of just PUSH
-						if (previousOperator == pow && nextOperator != "^") {
+						if (previousOperator === pow && nextOperator != "^") {
 							PARC(nodeStack, newNode);
-						} else if ((previousOperator == multiply || previousOperator == divide) && (nextOperator != "^")) {
+						} else if ((previousOperator === multiply || previousOperator === divide) && (nextOperator != "^")) {
 							PARC(nodeStack, newNode);
-						} else if ((previousOperator == divide && (nextOperator == "*" || nextOperator == "/")) || (previousOperator == subtract && (nextOperator == "+" || nextOperator == "-"))) {
+						} else if ((previousOperator === divide && (nextOperator === "*" || nextOperator === "/")) || (previousOperator === subtract && (nextOperator === "+" || nextOperator === "-"))) {
 							PARC(nodeStack, newNode);
 						} else {
 							nodeStack.push(newNode);
@@ -132,13 +132,13 @@ function Parser() {
 			} else if (isOperator(token)) {
 				var newNode = new ExpressionNode(getFunctionFromOperator(token), null, null);
 				PAP(nodeStack, newNode);
-			} else if (token == ",") {// Commas indicate that the current function takes multiple parameters
+			} else if (token === ",") {// Commas indicate that the current function takes multiple parameters
 				var newNode = IPARC(nodeStack)
 				listArray.push(newNode);
-			} else if (token == "(") {// An open-parenthesis is just used as a marker, it should never be evaluated in the tree.
+			} else if (token === "(") {// An open-parenthesis is just used as a marker, it should never be evaluated in the tree.
 				var newNode = new ExpressionNode("(", null, null);
 				nodeStack.push(newNode);
-			} else if (token == ")") {// A close-parenthesis indicates to IPARC back to the last open-paren. If the array isn't empty, then we must be working with a multiparamater taking function (like min)
+			} else if (token === ")") {// A close-parenthesis indicates to IPARC back to the last open-paren. If the array isn't empty, then we must be working with a multiparamater taking function (like min)
 				var newNode = IPARC(nodeStack);
 				if (listArray.length != 0) {
 					listArray.push(newNode);
@@ -167,11 +167,11 @@ function Parser() {
 						nextOperator = expressionString.charAt(index + 1);
 
 						// If the nextOperator is of lesser precedence (or less than or equal if the next is division) then PARC instead of just PUSH
-						if (previousOperator == pow && nextOperator != "^") {
+						if (previousOperator === pow && nextOperator != "^") {
 							PARC(nodeStack, newNode);
-						} else if ((previousOperator == multiply || previousOperator == divide) && (nextOperator != "^")) {
+						} else if ((previousOperator === multiply || previousOperator === divide) && (nextOperator != "^")) {
 							PARC(nodeStack, newNode);
-						} else if ((previousOperator == divide && (nextOperator == "*" || nextOperator == "/")) || (previousOperator == subtract && (nextOperator == "+" || nextOperator == "-"))) {
+						} else if ((previousOperator === divide && (nextOperator === "*" || nextOperator === "/")) || (previousOperator === subtract && (nextOperator === "+" || nextOperator === "-"))) {
 							PARC(nodeStack, newNode);
 						} else {
 							nodeStack.push(newNode);
@@ -197,7 +197,7 @@ function Parser() {
 	}
 
 	function printTree(node) {
-		if (node == null) {
+		if (node === null) {
 			console.log(" NULL ");
 			return;
 		}
@@ -214,7 +214,7 @@ function Parser() {
 		var peekedNode = stack[stack.length - 1];
 
 		//Special case for a "-" to allow it to also function as additive inverse
-		if (nodeToPap.operation === subtract && ((peekedNode == null) || ((nodeIsOperator(peekedNode) && peekedNode.right == null) || peekedNode.operation == "("))) {
+		if (nodeToPap.operation === subtract && ((peekedNode === null) || ((nodeIsOperator(peekedNode) && peekedNode.right === null) || peekedNode.operation === "("))) {
 			stack.push(nodeToPap);
 		} else {
 			nodeToPap.left = peekedNode;
@@ -251,7 +251,7 @@ function Parser() {
 	}
 
 	function isOperator(token) {
-		return token == "+" || token == "-" || token == "*" || token == "/" || token == "^";
+		return token === "+" || token === "-" || token === "*" || token === "/" || token === "^";
 	}
 
 	function getFunctionFromOperator(token) {
@@ -271,7 +271,7 @@ function Parser() {
 
 	// Check to see if the node's operation is one of the 5 basic ones, i.e. +,-, *,/, or ^
 	function nodeIsOperator(node) {
-		if (node == null) {
+		if (node === null) {
 			return false;
 		}
 		return node.operation === add || node.operation === subtract || node.operation === multiply || node.operation === divide || node.operation === pow;
