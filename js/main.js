@@ -73,6 +73,18 @@ function Ans(left, right){
 	return answer;
 }
 
+function e(left, right) {
+	return Math.E;
+}
+
+function theUniverse(left, right) {
+	return 42;
+}
+
+function pi(left, right) {
+	return Math.PI;
+}
+
 function ans(left, right){
 	return Ans(left, right);
 }

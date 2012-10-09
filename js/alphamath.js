@@ -202,3 +202,16 @@ function atomsToMoles(left, right) {
 	var avogadro = 6.22 * Math.pow(10, 23);
 	return right / avogadro;
 }
+
+function fib(right) {
+	right = right.evaluateExpression();
+    var f1 = [0];
+    var f2 = [1];
+
+    while (right--) {
+        var f3 = add(f1, f2)
+        f1 = f2;
+        f2 = f3;
+    }
+    return f1.join("");
+}
