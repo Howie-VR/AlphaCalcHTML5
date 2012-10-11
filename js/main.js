@@ -1,16 +1,22 @@
+
 var lastEvaluatedExpression = '';
 var lastAnswer = 0;
 var parser = new Parser();
 
+var cellClicked = function(){
+	document.getElementById('expressionbox').value += this.innerHTML;
+}
+
 function addTextToExpressionBox(text) {"use strict";
-	var box = document.getElementById('expressionbox');
+
+	var expressionBox = document.getElementById('expressionbox');
 	//Check to see if the text being added is an operator. If it is, and the box is empty, the program assumes it's trying to
 	//work with the answer.
-	if ((box.value === '' && (text === "+" || text === "*" || text === "/"))) {
-		box.value += 'Ans';
+	if ((expressionBox.value === '' && (text === "+" || text === "*" || text === "/"))) {
+		expressionBox.value += 'Ans';
 	}
 	//Add the text to the bar. The text is defined in index.html as the value passed by the buttons in the onclick() method.
-		box.value += text;
+		expressionBox.value += text;
 }
 
 function clearExpressionBox() {"use strict";
@@ -18,41 +24,31 @@ function clearExpressionBox() {"use strict";
 	document.getElementById('expressionbox').value = '';
 }
 
-function solution() {
-	//This method is not called by a button, just inside addSolutionToHistoryBox();
-	"use strict";
-	//Parse the expression that's in the Expression box. Also, since the parser allows for variable substitution, set the variable 'Ans'
-	//to the value of the history box.
-	var expression = document.getElementById('expressionbox').value;
-	var rootExpressionNode = parser.parse(document.getElementById('expressionbox').value);
-	var answer = rootExpressionNode.evaluateExpression();
-	return answer;
-}
-
-function addSolutionToHistoryBox() {"use strict";
-	//Get the solution.
-	var solutionString = solution();
-	lastAnswer = solutionString;
-	//Set the history box and Answer button values to the solution.
-	document.getElementById('historybox').value = solutionString;
-	document.getElementById('previousanswer').innerText = solutionString;
-	//Save the expression to the lastEvaluatedExpression var.
-	lastEvaluatedExpression = document.getElementById('expressionbox').value;
-	//Clear the expression box.
-	clearExpressionBox();
-}
-
 function equalsButtonPressed() {
 	//This method is called directly by the equals button.
 	//Get the expressionbox.
-	var box = document.getElementById('expressionbox');
+	var expressionBox = document.getElementById('expressionbox');
 	//Check to see what's in the expressionbox. If it's empty, and there is something stored in the lastEvaluatedExpression,
 	//then set the box's value to the last expression
-	if (box.value === '' && window.lastEvaluatedExpression !== '') {
-		box.value = window.lastEvaluatedExpression;
+	if (expressionBox.value === '' && window.lastEvaluatedExpression !== '') {
+		expressionBox.value = window.lastEvaluatedExpression;
 	}
-	//Then do the solution process.
-	addSolutionToHistoryBox();
+	
+	var expressionString = expressionBox.value;
+	expressionString = expressionString.replace(" ", "");
+	var rootExpressionNode = parser.parse(expressionString);
+	var answer = rootExpressionNode.evaluateExpression();
+	lastAnswer = answer;
+	var newRow = document.getElementById('historytable').insertRow(0);
+	var expressionCell = newRow.insertCell(0);
+	expressionCell.className = "expressioncell";
+	expressionCell.innerHTML = expressionString;
+	expressionCell.onclick = cellClicked;
+	var answerCell = newRow.insertCell(1);
+	answerCell.className = "answercell";
+	answerCell.innerHTML = answer;
+	answerCell.onclick = cellClicked;
+	clearExpressionBox();
 }
 
 function backspaceExpressionBox() {"use strict";
@@ -71,18 +67,6 @@ function Ans(left, right){
 		answer *= right.evaluateExpression();
 	}
 	return answer;
-}
-
-function e(left, right) {
-	return Math.E;
-}
-
-function theUniverse(left, right) {
-	return 42;
-}
-
-function pi(left, right) {
-	return Math.PI;
 }
 
 function ans(left, right){

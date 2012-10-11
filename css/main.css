@@ -98,7 +98,6 @@ textarea {
 }
 
 #expressionbox {
-	/*background-image: url(../img/ExpressionBackground.png);*/
 	background-color:#222;
 	background-attachment: fixed;
 	background-position: center;
@@ -106,7 +105,9 @@ textarea {
 }
 
 #historybox {
-	/*background-image: url(../img/HistoryBackground.png);*/
+	height: 35px;
+	width: 100%;
+	overflow: auto;
 	background-color:#222;
 	background-attachment: scroll;
 	background-repeat: no-repeat;
@@ -125,15 +126,22 @@ button {
 	min-height: 200%;
 }
 
-.lightbutton {
-	
+#historytable{
+	width: 100%;
+	border: none;
+	color: #CCCCCC;
+	font-size: 14px;
 }
 
+.expressioncell {
+	width: 80%;
+	text-align: left;
+}
 
-
-
-
-
+.answercell {
+	width: 20%;
+	text-align: right;
+}
 
 
 

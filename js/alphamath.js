@@ -215,3 +215,17 @@ function fib(right) {
     }
     return f1.join("");
 }
+
+// functions representing constants.
+
+function e(left, right) {
+	return Math.E;
+}
+
+function theUniverse(left, right) {
+	return 42;
+}
+
+function pi(left, right) {
+	return Math.PI;
+}

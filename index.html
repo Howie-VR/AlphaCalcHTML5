@@ -41,7 +41,11 @@
 
 
         <textarea id="expressionbox" rows="1" placeholder="Enter expression..." autofocus="autofocus"></textarea>
-        <textarea id="historybox" rows="1" readonly="readonly" placeholder="Expression history..."></textarea>
+        <div id="historybox">
+        	<table id="historytable">
+        		
+        	</table>
+        </div>
         <div id="editingfunctions">
 	        <button id="cursorleftbutton" class="darkbutton" onclick="addTextToExpressionBox('(')">&#40;</button>
 	        <button id="cursorrightbutton" class="darkbutton" onclick="addTextToExpressionBox(')')">&#41;</button>
