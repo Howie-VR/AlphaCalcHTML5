@@ -1,7 +1,19 @@
-/*
- * Written by Howie Jordan
- * Copyright (c) 2012 Valley Rocket, LLC
- * Open Source license pending.
+/** 
+ * Author: Howie Jordan and Harlan Haskins
+ * Copyright (C) 2012, Valley Rocket, LLC
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/agpl>.
  *
  * All available math functions defined herein.
  * In accordance with the expected format for the expression tree, all math functions herein follow the followin rules:
@@ -10,7 +22,7 @@
  * 2) All functions must take two parameters. These are the node's left and right children. In the case of non-operation math functions,
  *    i.e. any function save for those representing +,-,*,/, and ^, will likely only use the right child. If the function takes more than one paramater,
  *    such as "min" which calculates the minimum value from a list of values, the right child will contain an array of expression trees.
- *
+ * The only exceptions are unary operators. A unary operator that follows it's operand (such as factorial, "!") takes it's left node as it's operand.
  *
  */
 
@@ -218,14 +230,30 @@ function fib(right) {
 
 // functions representing constants.
 
+function constant(left, right, constant){
+	var result;
+	if(constant == null){
+		result = right.evaluateExpression();
+	}else{
+		result = constant;
+		if(right != null){
+			result *= right.evaluateExpression();
+		}
+	}
+	return result;
+}
+
 function e(left, right) {
-	return Math.E;
+	return constant(left, right, Math.E);
 }
 
 function theUniverse(left, right) {
-	return 42;
+	return constant(left, right, 42);
 }
 
 function pi(left, right) {
-	return Math.PI;
+	return constant(left, right, Math.PI)
 }
+
+var PI = pi;
+var π = pi;
