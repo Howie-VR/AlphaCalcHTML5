@@ -30,8 +30,9 @@ function equalsButtonPressed() {
 	var expressionBox = document.getElementById('expressionbox');
 	//Check to see what's in the expressionbox. If it's empty, and there is something stored in the lastEvaluatedExpression,
 	//then set the box's value to the last expression
-	if (expressionBox.value === '' && window.lastEvaluatedExpression !== '') {
-		expressionBox.value = window.lastEvaluatedExpression;
+	if (expressionBox.value === '') {
+		var cell = document.getElementById('historytable').rows[0].cells[0];
+		expressionBox.value = cell.firstChild.data;
 	}
 	
 	var expressionString = expressionBox.value;
